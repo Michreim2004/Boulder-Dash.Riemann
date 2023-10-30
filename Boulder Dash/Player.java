@@ -62,21 +62,18 @@ public class Player extends Actor
     }
     
     private void move() {
-        Player[][] player = new Player[30][20];
-        player[x][y] = new Player();
-        //addObject(player[x][y], x * 21+10, y * 21+11);
         
         if (upPressed) {
-            player[x][y] = player[x][y-1];
+            images[x][y] = images[x][y-1];
         }
         if (downPressed) {
-            player[x][y] = player[x][y+1];
+            images[x][y] = images[x][y+1];
         }
         if (leftPressed) {
-            player[x][y] = player[x-1][y];
+            images[x][y] = images[x-1][y];
         }
         if (rightPressed) {
-            player[x][y] = player[x+1][y];
+            images[x][y] = images[x+1][y];
         }
     }
     
