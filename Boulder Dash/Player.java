@@ -6,11 +6,7 @@ public class Player extends Actor
     boolean downPressed = false;
     boolean leftPressed = false;
     boolean rightPressed = false;
-    private static final int BLOCK_SIZE = 94;
-    private int x = 21;
-    private int y = 21;
     
-    //setLocation(player[1][1],player[1][1]);
 
     public void act() {
         move();
