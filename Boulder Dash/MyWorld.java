@@ -63,7 +63,6 @@ public class MyWorld extends World
             addObject(wand, i * wand.getImage().getWidth()+10, 114);
         }
         GreenfootImage bg = new GreenfootImage(getWidth(), getHeight());
-        bg.setColor(Color.BLACK);
         bg.fill();
         setBackground(bg);*/
     }
