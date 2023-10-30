@@ -48,23 +48,7 @@ public class MyWorld extends World
             x = 0;
         }
         
-        //Player player = new Player();
-        //addObject(player, 94, 94);
-        
-        //Erde erde = new Erde();
-        //addObject(erde,erde.getImage().getWidth(),erde.getImage().getHeight());
-        
-        /*Erde[][] erde = new Erde[30][20];
-        for (int x = 0; x < 30; x++) {
-            for (int y = 0; y < 20; y++) {
-                erde[x][y] = new Erde();
-                addObject(erde[x][y], x * 21+10, y * 21+11);
-            }
-        }
-        
-        GreenfootImage bg = new GreenfootImage(getWidth(), getHeight());
-        bg.fill();
-        setBackground(bg);*/
+        //setBackground(..);für evtl. lvl. 2
     }
     
     public void act() {
