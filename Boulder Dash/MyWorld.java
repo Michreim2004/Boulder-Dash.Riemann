@@ -58,10 +58,6 @@ public class MyWorld extends World
             }
         }
         
-        for(int i=0;i<23;i++){
-            Wand wand = new Wand();
-            addObject(wand, i * wand.getImage().getWidth()+10, 114);
-        }
         GreenfootImage bg = new GreenfootImage(getWidth(), getHeight());
         bg.fill();
         setBackground(bg);*/
