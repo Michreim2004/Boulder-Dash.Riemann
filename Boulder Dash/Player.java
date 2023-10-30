@@ -12,11 +12,6 @@ public class Player extends Actor
     private int x = 21;
     private int y = 21;
     
-    /*3public Player(){
-        images = new GreenfootImage[10];
-        images[0] = new GreenfootImage("PLAYER.png"); 
-    }*/
-    //Player[][] player = new Player[30][20];
     //setLocation(player[1][1],player[1][1]);
 
     public void act() {
