@@ -32,7 +32,7 @@ public class MyWorld extends World
     
     public MyWorld()
     {    
-        super(608, 400, 1); 
+        super(608, 399, 1); 
         int x=0;
         int y=0;
         for(int j=0;j<images.length;j++){
