@@ -2,8 +2,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Player extends Actor
 {
-    /*3private GreenfootImage[] images;
-    private int currentImageIndex;*/
     boolean upPressed = false;
     boolean downPressed = false;
     boolean leftPressed = false;
