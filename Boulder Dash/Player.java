@@ -78,18 +78,6 @@ public class Player extends Actor
         if (rightPressed) {
             player[x][y] = player[x+1][y];
         }
-        /*2if (upPressed) {
-            setLocation(getX(), getY() - 3);
-        }
-        if (downPressed) {
-            setLocation(getX(), getY() + 3);
-        }
-        if (leftPressed) {
-            setLocation(getX() - 3, getY());
-        }
-        if (rightPressed) {
-            setLocation(getX() + 3, getY());
-        }*/
     }
     
     private void checkForStone() {
