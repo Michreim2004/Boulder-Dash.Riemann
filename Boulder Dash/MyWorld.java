@@ -3,16 +3,53 @@ import java.util.List;
 
 public class MyWorld extends World
 {
+    GreenfootImage w = new GreenfootImage("wall.png");
+    GreenfootImage p = new GreenfootImage("PLAYER.png");
+    GreenfootImage s = new GreenfootImage("stone.png");
+    GreenfootImage e = new GreenfootImage("ground.png");
+    private GreenfootImage[][] images ={
+        {e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e},
+        {e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e},
+        {e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e},
+        {e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e},
+        {e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e},
+        {e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e},
+        {w,w,w,w,w,w,w,w,w,w,w,w,w,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e},
+        {e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e},
+        {e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e},
+        {e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e},
+        {e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e},
+        {e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e},
+        {e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e},
+        {e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e},
+        {e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e},
+        {e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e},
+        {e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e},
+        {e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e},
+        {e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e},
+    };
+    
     public MyWorld()
     {    
         super(608, 400, 1); 
+        int x=0;
+        int y=0;
+        for(int j=0;j<images.length;j++){
+            for(int i=0;i<29;i++){ //oder bis images[j].length
+                    getBackground().drawImage(images[j][i],x,y);
+                    x = x+21;
+                }
+            y += 21;
+            x = 0;
+        }
+        
         //Player player = new Player();
         //addObject(player, 94, 94);
         
         //Erde erde = new Erde();
         //addObject(erde,erde.getImage().getWidth(),erde.getImage().getHeight());
         
-        Erde[][] erde = new Erde[30][20];
+        /*Erde[][] erde = new Erde[30][20];
         for (int x = 0; x < 30; x++) {
             for (int y = 0; y < 20; y++) {
                 erde[x][y] = new Erde();
@@ -27,7 +64,7 @@ public class MyWorld extends World
         GreenfootImage bg = new GreenfootImage(getWidth(), getHeight());
         bg.setColor(Color.BLACK);
         bg.fill();
-        setBackground(bg);
+        setBackground(bg);*/
     }
     
     public void act() {
