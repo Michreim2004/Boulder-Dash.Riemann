@@ -37,7 +37,7 @@ public class MyWorld extends World
         {c,s,e,e,e,e,e,e,e,e,s,s,e,e,e,e,e,e,b,b,e,e,e,s,e,s,e,e,e},
         {e,e,e,e,s,e,e,e,e,e,e,e,s,e,e,e,e,e,s,e,s,c,e,e,e,e,e,e,e},
         {e,e,e,e,s,c,b,e,e,e,e,e,s,e,s,s,e,e,s,e,s,c,e,e,e,e,end,e,e},
-        {e,c,e,e,e,e,s,e,e,e,e,e,e,e,e,e,e,e,s,e,e,c,e,e,e,e,e,e,e},
+        {e,c,e,e,e,e,s,e,e,e,e,e,e,e,e,e,e,e,s,e,e,c,e,e,e,e,e,e,e}//,
     };
     
     public MyWorld()
@@ -133,36 +133,55 @@ public class MyWorld extends World
     }
 
     private void movePlayer() {
-        int x = getX(p);
-        int y = getY(p);
-        //while(-1<currentPlayerY&&currentPlayerY>19&&-1<currentPlayerX&&currentPlayerX>29){
+        //int x = getX(p);
+        //int y = getY(p);
+        if(currentPlayerY>0){
             if (upPressed) {
                 images[currentPlayerX][currentPlayerY] = b;
                 images[currentPlayerX][currentPlayerY - 1] = p;
                 /*getBackground().drawImage(images[currentPlayerX][currentPlayerY],x,y);
                 getBackground().drawImage(images[currentPlayerX][currentPlayerY - 1],x,y);
                 currentPlayerY -= 1;*/
-                getBackground().drawImage(images[currentPlayerX][currentPlayerY],currentPlayerX*21,currentPlayerY*21);
                 getBackground().drawImage(images[currentPlayerX][currentPlayerY - 1],currentPlayerX*21,(currentPlayerY*21) - 21);
-                currentPlayerY -= 1;
-                Greenfoot.delay(10);
+                getBackground().drawImage(images[currentPlayerX][currentPlayerY],currentPlayerX*21,currentPlayerY*21);
+                if(currentPlayerY!=0){
+                    currentPlayerY -= 1;
+                }
+                Greenfoot.delay(5);
             }
+        }
+            if(currentPlayerY<18){
             if (downPressed) {
                 images[currentPlayerX][currentPlayerY] = b;
                 images[currentPlayerX][currentPlayerY + 1] = p;
+                getBackground().drawImage(images[currentPlayerX][currentPlayerY + 1],currentPlayerX*21,(currentPlayerY*21) + 21);
+                getBackground().drawImage(images[currentPlayerX][currentPlayerY],currentPlayerX*21,currentPlayerY*21);
                 currentPlayerY += 1;
+                Greenfoot.delay(5);
             }
+        }
+            if(currentPlayerX>0){
             if (leftPressed) {
                 images[currentPlayerX][currentPlayerY] = b;
                 images[currentPlayerX - 1][currentPlayerY] = p;
-                currentPlayerX -= 1;
+                getBackground().drawImage(images[currentPlayerX - 1][currentPlayerY],(currentPlayerX*21) - 21,currentPlayerY*21);
+                getBackground().drawImage(images[currentPlayerX][currentPlayerY],currentPlayerX*21,currentPlayerY*21);
+                if(currentPlayerX!=0){
+                    currentPlayerX -= 1;
+                }
+                Greenfoot.delay(5);
             }
+        }
+            if(currentPlayerX<28){
             if (rightPressed) {
                 images[currentPlayerX][currentPlayerY] = b;
                 images[currentPlayerX + 1][currentPlayerY] = p;
+                getBackground().drawImage(images[currentPlayerX + 1][currentPlayerY],(currentPlayerX*21) + 21,currentPlayerY*21);
+                getBackground().drawImage(images[currentPlayerX][currentPlayerY],currentPlayerX*21,currentPlayerY*21);
                 currentPlayerX += 1;
+                Greenfoot.delay(5);
             }
-        //}
+        }
     }
 
     private void checkForStone() {
