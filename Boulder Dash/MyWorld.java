@@ -78,6 +78,13 @@ public class MyWorld extends World
         return (dx == 1 && dy == 0) || (dx == 0 && dy == 1);
     }
 
+    public boolean isBelow(GreenfootImage i, GreenfootImage target){
+        int x = getX(i);
+        int targetX = getX(target);
+        int dx = Math.abs(x - targetX);
+        return (dx == 1);
+    }
+
     public int getX(GreenfootImage img){
         for(int j=0;j<images.length;j++){
             for(int i=0;i<images[j].length;i++){
