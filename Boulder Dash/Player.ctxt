@@ -2,11 +2,4 @@
 comment0.target=Player
 comment1.params=
 comment1.target=void\ act()
-comment1.text=3public\ Player(){\r\n\ \ \ \ \ \ \ \ images\ \=\ new\ GreenfootImage[10];\r\n\ \ \ \ \ \ \ \ images[0]\ \=\ new\ GreenfootImage("PLAYER.png");\ \r\n}
-comment2.params=
-comment2.target=void\ checkKeys()
-comment3.params=
-comment3.target=void\ move()
-comment4.params=
-comment4.target=void\ checkForStone()
-numComments=5
+numComments=2
