@@ -17,12 +17,12 @@ public class MyWorld extends World
     boolean leftPressed = false;
     boolean rightPressed = false;
     boolean active = false;
-    static int currentPlayerX = 3;
-    static int currentPlayerY = 2;
-    static int sX = 0;
-    static int sY = 0;//Steinpos.
-    Thread playerThread = new Thread(new PlayerMover());
-    Thread stoneThread = new Thread(new StoneMover());
+    private int currentPlayerX = 3;//static
+    private int currentPlayerY = 2;
+    private int sX = 0;
+    private int sY = 0;//Steinpos.
+    //Thread playerThread = new Thread(new PlayerMover());
+    //Thread stoneThread = new Thread(new StoneMover());
     private GreenfootImage[][] images ={
         {e,e,e,e,e,e,e,s,e,e,e,b,e,e,e,s,e,s,e,e,e,e,b,e,e,s,e,e,e},
         {e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,c,s,e,e,e,e,e,b,e,e,e,b,e},
@@ -67,13 +67,12 @@ public class MyWorld extends World
             y += 21;
             x = 0;
         }
-        
         //setBackground(..);für evtl. lvl. 2
     }
     
     public void act() {
         movePlayer();
-        //checkForStone();
+        checkForStone();
         //stone();
     }
     
@@ -172,7 +171,7 @@ public class MyWorld extends World
                                 sX = currentPlayerX;
                                 sY = currentPlayerY - 1;
                                 active=true;
-                                stone();
+                                //stone();
                             }
                         }
                     }
@@ -194,7 +193,7 @@ public class MyWorld extends World
                                 sX = currentPlayerX;
                                 sY = currentPlayerY - 1;
                                 active=true;
-                                stone();
+                                //stone();
                             }
                         }
                     }
@@ -218,7 +217,7 @@ public class MyWorld extends World
                                 sX = currentPlayerX;
                                 sY = currentPlayerY - 1;
                                 active=true;
-                                stone();
+                                //stone();
                             }
                         }
                     }
@@ -235,38 +234,43 @@ public class MyWorld extends World
     }
 
     public void checkForStone() {
-        while(active == true){ //if
-            for(int i=0;i<11;i++){
-                if(images[sY + 1][sX]!=s&&images[sY + 1][sX]!=w&&images[sY + 1][sX]!=e&&images[sY + 1][sX]!=p){ //while
-                    images[sY][sX] = b;
-                    images[sY + 1][sX] = s;
-                    getBackground().drawImage(images[sY + 1][sX],sX*21,(sY*21) + 21);
-                    getBackground().drawImage(images[sY][sX],sX*21,sY*21);
-                    sY ++;
-                    Greenfoot.delay(36);
-                    if(images[sY + 1][sX]==p){
+        while(active == true){  //if,while
+                for(int i=0;i<11;i++){
+                        if(images[sY + 1][sX]!=s&&images[sY + 1][sX]!=w&&images[sY + 1][sX]!=e&&images[sY + 1][sX]!=p){ //while
                         images[sY][sX] = b;
                         images[sY + 1][sX] = s;
                         getBackground().drawImage(images[sY + 1][sX],sX*21,(sY*21) + 21);
                         getBackground().drawImage(images[sY][sX],sX*21,sY*21);
-                        reset();
-                    }
+                        if(sY<17){
+                            sY ++;
+                        }
+                        Greenfoot.delay(36);
+                        if(images[sY + 1][sX]==p){
+                            images[sY][sX] = b;
+                            images[sY + 1][sX] = s;
+                            getBackground().drawImage(images[sY + 1][sX],sX*21,(sY*21) + 21);
+                            getBackground().drawImage(images[sY][sX],sX*21,sY*21);
+                            //reset();
+                        }
+                }
+                else{
+                    active = false;
                 }
             }
             active = false;
         }
     }
     
-    public void stone(){
+    //public void stone(){
         //if(active == true){
-            stoneThread.start();
+            /*stoneThread.start();
             playerThread.start();
             if(active != true){
                 stoneThread.stop();
                 playerThread.stop();
             }
-        //}
-    }
+        }
+    }*/
     
     public void reset(){
         upPressed = false;
