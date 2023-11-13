@@ -224,6 +224,9 @@ public class MyWorld extends World
                     if(images[currentPlayerY][currentPlayerX + 1]==c){
                         crystalCount++;
                     }
+                    if(images[currentPlayerY][currentPlayerX + 1]==end&&crystalCount == 11){
+                        crystalCount = 0;
+                    }
                     if(active!=true){
                         if(currentPlayerY!=0){
                             if(images[currentPlayerY - 1][currentPlayerX]==s){
