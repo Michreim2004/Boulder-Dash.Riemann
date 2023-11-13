@@ -9,7 +9,7 @@ public class MyWorld extends World
     GreenfootImage e = new GreenfootImage("ground.png");
     GreenfootImage b = new GreenfootImage("blank.png");
     GreenfootImage g = new GreenfootImage("gold.png");
-    GreenfootImage c = new GreenfootImage("crystal.png");
+    GreenfootImage c = new GreenfootImage("crystal.png"); //lvl.1,11
     GreenfootImage end = new GreenfootImage("portal.png");
     GreenfootImage bot = new GreenfootImage("bot.png");
     boolean upPressed = false;
