@@ -17,6 +17,7 @@ public class MyWorld extends World
     boolean leftPressed = false;
     boolean rightPressed = false;
     boolean active = false;
+    private int crystalCount = 0;
     private int currentPlayerX = 3;//static
     private int currentPlayerY = 2;
     private int sX = 0;
