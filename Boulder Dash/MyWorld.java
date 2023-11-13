@@ -155,6 +155,9 @@ public class MyWorld extends World
                     if(images[currentPlayerY - 1][currentPlayerX]==c){
                         crystalCount++;
                     }
+                    if(images[currentPlayerY - 1][currentPlayerX]==end&&crystalCount == 11){
+                        crystalCount = 0;
+                    }
                     images[currentPlayerY][currentPlayerX] = b;
                     images[currentPlayerY - 1][currentPlayerX] = p;
                     getBackground().drawImage(images[currentPlayerY - 1][currentPlayerX],currentPlayerX*21,(currentPlayerY*21) - 21);
@@ -171,6 +174,9 @@ public class MyWorld extends World
                 if(images[currentPlayerY + 1][currentPlayerX]!=s&&images[currentPlayerY + 1][currentPlayerX]!=w){
                     if(images[currentPlayerY + 1][currentPlayerX]==c){
                         crystalCount++;
+                    }
+                    if(images[currentPlayerY + 1][currentPlayerX]==end&&crystalCount == 11){
+                        crystalCount = 0;
                     }
                     if(active!=true){
                         if(currentPlayerY!=0){
@@ -196,6 +202,9 @@ public class MyWorld extends World
                 if(images[currentPlayerY][currentPlayerX - 1]!=s&&images[currentPlayerY][currentPlayerX - 1]!=w){
                     if(images[currentPlayerY][currentPlayerX - 1]==c){
                         crystalCount++;
+                    }
+                    if(images[currentPlayerY][currentPlayerX - 1]==end&&crystalCount == 11){
+                        crystalCount = 0;
                     }
                     if(active!=true){
                         if(currentPlayerY!=0){
