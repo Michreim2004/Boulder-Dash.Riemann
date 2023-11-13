@@ -152,6 +152,9 @@ public class MyWorld extends World
         if(currentPlayerY>0){
             if (upPressed) {
                 if(images[currentPlayerY - 1][currentPlayerX]!=s&&images[currentPlayerY - 1][currentPlayerX]!=w){
+                    if(images[currentPlayerY - 1][currentPlayerX]==c){
+                        crystalCount++;
+                    }
                     images[currentPlayerY][currentPlayerX] = b;
                     images[currentPlayerY - 1][currentPlayerX] = p;
                     getBackground().drawImage(images[currentPlayerY - 1][currentPlayerX],currentPlayerX*21,(currentPlayerY*21) - 21);
