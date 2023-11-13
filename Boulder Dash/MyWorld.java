@@ -169,6 +169,9 @@ public class MyWorld extends World
         if(currentPlayerY<18){
             if (downPressed) {
                 if(images[currentPlayerY + 1][currentPlayerX]!=s&&images[currentPlayerY + 1][currentPlayerX]!=w){
+                    if(images[currentPlayerY + 1][currentPlayerX]==c){
+                        crystalCount++;
+                    }
                     if(active!=true){
                         if(currentPlayerY!=0){
                             if(images[currentPlayerY - 1][currentPlayerX]==s){
