@@ -272,7 +272,7 @@ public class MyWorld extends World
         }
     }*/
     
-    public void reset(){
+    public void reset(){ //static void
         upPressed = false;
         downPressed = false;
         leftPressed = false;
