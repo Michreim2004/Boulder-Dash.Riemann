@@ -2,8 +2,10 @@
 comment0.target=Player
 comment1.params=
 comment1.target=void\ act()
-comment2.params=
-comment2.target=void\ checkKeys()
+comment2.params=images
+comment2.target=void\ setImages(greenfoot.Actor[][])
 comment3.params=
-comment3.target=void\ movePlayer()
-numComments=4
+comment3.target=void\ checkKeys()
+comment4.params=
+comment4.target=void\ movePlayer()
+numComments=5

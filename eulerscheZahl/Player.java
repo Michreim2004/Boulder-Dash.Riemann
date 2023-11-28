@@ -2,18 +2,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Player extends Actor
 {
-    MyWorld world = (MyWorld) getWorld();
-    Actor [][] images = world.getImages();
-    Wall w = world.w;
-    Player p = world.p;
-    Stone s = world.s;
-    Ground e = world.e;
-    Blank b = world.b;
-    Gold g = world.g;
-    Crystal c = world.c;
-    Portal end = world.end;
-    Bot bot = world.bot;
-    GreenfootImage background = world.getBackground();
+    private Actor [][] images;
+    //Actor [][] images = world.getImages();
+    
     boolean upPressed = false;
     boolean downPressed = false;
     boolean leftPressed = false;
@@ -25,7 +16,18 @@ public class Player extends Actor
     
     public void act()
     {
-        
+        movePlayer();
+        checkKeys();
+    }
+    
+    public void setImages(Actor[][] images) {
+        if(images== null){
+            System.out.println("b");
+        }
+        if(images!= null){
+            System.out.println("b1");
+        }
+        this.images = images;
     }
     
     private void checkKeys() {
@@ -59,6 +61,18 @@ public class Player extends Actor
     }
     
     public void movePlayer() {
+        MyWorld world = (MyWorld) getWorld();
+        //world.images();
+        Wall w = world.w;
+        Player p = world.p;
+        Stone s = world.s;
+        Ground e = world.e;
+        Blank b = world.b;
+        Gold g = world.g;
+        Crystal c = world.c;
+        Portal end = world.end;
+        Bot bot = world.bot;
+        //GreenfootImage background = world.getBackground();
         if(currentPlayerY>0){
             if (upPressed) {
                 if(images[currentPlayerY - 1][currentPlayerX]!=s&&images[currentPlayerY - 1][currentPlayerX]!=w){
@@ -167,6 +181,5 @@ public class Player extends Actor
                 }
             }
         }*/
-        checkKeys();
     }
 }
