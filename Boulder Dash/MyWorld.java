@@ -22,6 +22,8 @@ public class MyWorld extends World
     private int currentPlayerY = 2;
     private int sX = 0;
     private int sY = 0;//Steinpos.
+    private boolean above = false;
+    private int countFall = 0;
     //Thread playerThread = new Thread(new PlayerMover());
     //Thread stoneThread = new Thread(new StoneMover());
     private GreenfootImage[][] images ={
@@ -74,6 +76,7 @@ public class MyWorld extends World
     public void act() {
         movePlayer();
         checkForStone();
+        //countFall = 0;
         //stone();
     }
     
@@ -261,32 +264,45 @@ public class MyWorld extends World
     public void checkForStone() {
         while(active == true){  //if,while
                 for(int i=0;i<11;i++){
-                        if(images[sY + 1][sX]!=s&&images[sY + 1][sX]!=w&&images[sY + 1][sX]!=e&&images[sY + 1][sX]!=p){ //while
+                if(images[sY + 1][sX]!=s&&images[sY + 1][sX]!=w&&images[sY + 1][sX]!=e&&images[sY + 1][sX]!=p){ //while
+                    images[sY][sX] = b;
+                    images[sY + 1][sX] = s;
+                    if(sY>0){
+                        if(images[sY - 1][sX]==s){
+                            above = true;
+                        }
+                    }
+                    getBackground().drawImage(images[sY + 1][sX],sX*21,(sY*21) + 21);
+                    getBackground().drawImage(images[sY][sX],sX*21,sY*21);
+                    if(sY<17){
+                        sY ++;
+                        countFall++;
+                    }
+                    Greenfoot.delay(36);
+                    if(images[sY + 1][sX]==p){
                         images[sY][sX] = b;
                         images[sY + 1][sX] = s;
                         getBackground().drawImage(images[sY + 1][sX],sX*21,(sY*21) + 21);
                         getBackground().drawImage(images[sY][sX],sX*21,sY*21);
-                        if(sY<17){
-                            sY ++;
-                        }
-                        Greenfoot.delay(36);
-                        if(images[sY + 1][sX]==p){
-                            images[sY][sX] = b;
-                            images[sY + 1][sX] = s;
-                            getBackground().drawImage(images[sY + 1][sX],sX*21,(sY*21) + 21);
-                            getBackground().drawImage(images[sY][sX],sX*21,sY*21);
-                            //reset();
-                        }
+                        reset();
+                    }
                 }
-                else{
+                /*else{
                     active = false;
-                }
+                }*/
             }
+            if(above){
+                        sY=sY-countFall;
+                        //countFall = 0;
+                        above = false;
+                        checkForStone();
+                    }
+            //countFall = 0;
             active = false;
         }
     }
     
-    //public void stone(){
+    /*public void stone(){
         //if(active == true){
             /*stoneThread.start();
             playerThread.start();
@@ -298,13 +314,25 @@ public class MyWorld extends World
     }*/
     
     public void reset(){ //static void
+        GreenfootImage w = new GreenfootImage("wall.png");
+        GreenfootImage p = new GreenfootImage("PLAYER.png");
+        GreenfootImage s = new GreenfootImage("stone.png");
+        GreenfootImage e = new GreenfootImage("ground.png");
+        GreenfootImage b = new GreenfootImage("blank.png");
+        GreenfootImage g = new GreenfootImage("gold.png");
+        GreenfootImage c = new GreenfootImage("crystal.png"); //lvl.1,11
+        GreenfootImage end = new GreenfootImage("portal.png");
+        GreenfootImage bot = new GreenfootImage("bot.png");
         upPressed = false;
         downPressed = false;
         leftPressed = false;
         rightPressed = false;
+        int crystalCount = 0;
         active = false;
         currentPlayerX = 3;
         currentPlayerY = 2;
+        int sX = 0;
+        int sY = 0;//Steinpos.
         int x=0;
         int y=0;
         GreenfootImage[][] images ={

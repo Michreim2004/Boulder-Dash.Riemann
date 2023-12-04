@@ -12,7 +12,6 @@ comment4.target=void\ movePlayer()
 comment5.params=
 comment5.target=void\ checkForStone()
 comment6.params=
-comment6.target=void\ stone()
-comment7.params=
-comment7.target=void\ reset()
-numComments=8
+comment6.target=void\ reset()
+comment6.text=public\ void\ stone(){\r\n\ \ \ \ \ \ \ \ //if(active\ \=\=\ true){\r\n\ \ \ \ \ \ \ \ \ \ \ \ /*stoneThread.start();\r\n\ \ \ \ \ \ \ \ \ \ \ \ playerThread.start();\r\n\ \ \ \ \ \ \ \ \ \ \ \ if(active\ \!\=\ true){\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stoneThread.stop();\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ playerThread.stop();\r\n\ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ }\r\n}
+numComments=7
