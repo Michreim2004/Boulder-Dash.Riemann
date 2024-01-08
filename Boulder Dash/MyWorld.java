@@ -400,6 +400,7 @@ public class MyWorld extends World
             x = 0;
         }
         //}
+        crystalCount = 0;
     }
     Thread player = new Thread(new Runnable(){
         public void run(){
