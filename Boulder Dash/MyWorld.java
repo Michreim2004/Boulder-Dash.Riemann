@@ -399,6 +399,7 @@ public class MyWorld extends World
             y += 21;
             x = 0;
         }
+        //}
     }
     Thread player = new Thread(new Runnable(){
         public void run(){
