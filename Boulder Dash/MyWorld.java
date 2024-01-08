@@ -74,6 +74,7 @@ public class MyWorld extends World
     }
     
     public void act() {
+        checkForNextLVL();
         movePlayer();
         checkForStone();
         //countFall = 0;
@@ -357,6 +358,40 @@ public class MyWorld extends World
         {e,c,e,e,e,e,s,e,e,e,e,e,e,e,e,e,e,e,s,e,e,c,e,e,e,e,e,e,e}
         };
         for(int j=0;j<19;j++){
+            for(int i=0;i<29;i++){ //oder bis images[j].length
+                    getBackground().drawImage(images[j][i],x,y);
+                    x = x+21;
+                }
+            y += 21;
+            x = 0;
+        }
+    }
+    public void checkForNextLVL(){
+        //if(crystalCount==11&&currentPlayerX==27&&currentPlayerY==18){
+            GreenfootImage[][] images ={
+            {g,g,g,g,g,g,g,g,g,g,g,g,g,w,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g},
+            {g,e,e,e,e,e,e,e,e,e,e,e,e,w,e,e,c,s,e,e,e,e,e,b,e,e,e,b,e},
+            {e,e,e,p,e,e,e,e,e,e,e,e,e,w,e,e,s,e,e,e,e,e,e,e,e,s,e,e,e},
+            {e,e,e,e,e,e,e,e,e,s,e,e,e,b,b,e,e,e,e,e,e,s,e,e,s,e,e,e,b},
+            {e,e,e,e,e,e,e,e,e,s,s,e,e,w,s,s,e,e,e,s,e,e,e,e,e,s,e,s,e},
+            {s,e,e,e,b,b,e,e,e,e,e,s,e,w,e,s,e,s,e,e,e,e,e,e,e,s,e,s,s},
+            {w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,e,e,e,e,e,s,e,e,s},
+            {e,e,e,s,s,e,e,e,e,e,s,e,e,s,e,e,e,e,e,e,e,e,e,e,e,e,e,e,s},
+            {e,e,e,e,c,e,e,e,e,e,e,e,e,e,e,e,e,s,e,s,c,b,e,e,e,e,e,e,e},
+            {e,e,b,e,s,e,e,e,e,e,e,e,e,e,e,e,e,s,e,s,s,e,e,e,e,e,e,e,e},
+            {e,e,s,e,s,e,e,b,b,e,s,s,e,e,e,e,e,s,e,e,e,e,e,c,e,e,e,b,e},
+            {e,e,e,s,e,e,e,e,e,e,s,e,s,e,e,e,e,e,e,e,e,e,e,s,e,e,e,s,e},
+            {e,e,e,s,e,e,e,e,e,e,e,s,s,s,e,e,e,e,e,e,e,e,e,e,e,e,e,e,s},
+            {b,b,e,e,e,e,e,e,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w},
+            {s,b,e,e,e,e,e,e,e,e,b,c,e,s,e,e,e,s,e,e,e,e,s,e,e,b,e,e,e},
+            {c,s,e,e,e,e,e,e,e,e,s,s,e,e,e,e,e,e,b,b,e,e,e,s,e,s,e,e,e},
+            {e,e,e,e,s,e,e,e,e,e,e,e,s,e,e,e,e,e,s,e,s,c,e,e,e,e,e,e,e},
+            {e,e,e,e,s,c,b,e,e,e,e,e,s,e,s,s,e,e,s,e,s,c,e,e,e,e,end,e,e},
+            {e,c,e,e,e,e,s,e,e,e,e,e,e,e,e,e,e,e,s,e,e,c,e,e,e,e,e,e,e}
+            };
+            int x = 0;
+            int y = 0;
+            for(int j=0;j<19;j++){
             for(int i=0;i<29;i++){ //oder bis images[j].length
                     getBackground().drawImage(images[j][i],x,y);
                     x = x+21;
