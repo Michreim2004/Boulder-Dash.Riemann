@@ -18,7 +18,7 @@ public class MyWorld extends World
     boolean rightPressed = false;
     boolean active = false;
     private int crystalCount = 0;
-    private int currentPlayerX = 3;//static
+    private int currentPlayerX = 3;
     private int currentPlayerY = 2;
     private int sX = 0;
     private int sY = 0;//Steinpos.
@@ -313,7 +313,7 @@ public class MyWorld extends World
         }
     }*/
     
-    public void reset(){ //static void
+    public void reset(){ 
         GreenfootImage w = new GreenfootImage("wall.png");
         GreenfootImage p = new GreenfootImage("PLAYER.png");
         GreenfootImage s = new GreenfootImage("stone.png");
@@ -365,4 +365,21 @@ public class MyWorld extends World
             x = 0;
         }
     }
+    Thread player = new Thread(new Runnable(){
+        public void run(){
+            
+        }
+    });
+    
+    Thread stone = new Thread(new Runnable(){
+        public void run(){
+            
+        }
+    });
+    
+    Thread botThread = new Thread(new Runnable(){
+        public void run(){
+            
+        }
+    });
 }
