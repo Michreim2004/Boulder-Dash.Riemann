@@ -24,6 +24,7 @@ public class MyWorld extends World
     private int sY = 0;//Steinpos.
     private boolean above = false;
     private int countFall = 0;
+    private boolean isExecuted = false;
     //Thread playerThread = new Thread(new PlayerMover());
     //Thread stoneThread = new Thread(new StoneMover());
     private GreenfootImage[][] images ={
@@ -51,6 +52,7 @@ public class MyWorld extends World
     public MyWorld()
     {    
         super(609, 399, 1);//29,19 (%21) 
+        
         int x=0;
         int y=0;
         /*for(int j=0;j<images.length;j++){
@@ -74,11 +76,19 @@ public class MyWorld extends World
     }
     
     public void act() {
-        checkForNextLVL();
-        movePlayer();
-        checkForStone();
+        threads();
+        //checkForNextLVL();
+        //checkForStone();
         //countFall = 0;
         //stone();
+    }
+    
+    public void threads(){
+        if(isExecuted==false){
+            player.start();
+            System.out.println("start");
+            isExecuted = true;
+        }
     }
     
     /*public boolean isTouching(GreenfootImage i, GreenfootImage target){
@@ -154,6 +164,7 @@ public class MyWorld extends World
 
     public void movePlayer() {
         if(currentPlayerY>0){
+            System.out.println("move");
             if (upPressed) {
                 if(images[currentPlayerY - 1][currentPlayerX]!=s&&images[currentPlayerY - 1][currentPlayerX]!=w){
                     if(images[currentPlayerY - 1][currentPlayerX]==c){
@@ -370,14 +381,14 @@ public class MyWorld extends World
         //if(crystalCount==11&&currentPlayerX==27&&currentPlayerY==18){
             GreenfootImage[][] images ={
             {g,g,g,g,g,g,g,g,g,g,g,g,g,w,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g},
-            {g,e,e,e,e,e,e,e,e,e,e,e,e,w,e,e,c,s,e,e,e,e,e,b,e,e,e,b,e},
-            {e,e,e,p,e,e,e,e,e,e,e,e,e,w,e,e,s,e,e,e,e,e,e,e,e,s,e,e,e},
+            {g,g,g,g,g,g,g,g,g,g,g,g,g,w,g,g,c,s,e,e,e,e,e,b,e,e,e,b,e},
+            {g,g,g,p,g,g,g,g,g,g,g,g,g,w,e,e,s,e,e,e,e,e,e,e,e,s,e,e,e},
             {e,e,e,e,e,e,e,e,e,s,e,e,e,b,b,e,e,e,e,e,e,s,e,e,s,e,e,e,b},
             {e,e,e,e,e,e,e,e,e,s,s,e,e,w,s,s,e,e,e,s,e,e,e,e,e,s,e,s,e},
             {s,e,e,e,b,b,e,e,e,e,e,s,e,w,e,s,e,s,e,e,e,e,e,e,e,s,e,s,s},
-            {w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,e,e,e,e,e,s,e,e,s},
-            {e,e,e,s,s,e,e,e,e,e,s,e,e,s,e,e,e,e,e,e,e,e,e,e,e,e,e,e,s},
-            {e,e,e,e,c,e,e,e,e,e,e,e,e,e,e,e,e,s,e,s,c,b,e,e,e,e,e,e,e},
+            {g,g,g,g,g,g,g,g,g,g,g,g,g,w,g,g,g,g,g,g,g,g,g,g,g,g,g,g,g},
+            {e,e,e,s,s,e,e,e,e,e,s,e,e,w,e,e,e,e,e,e,e,e,e,e,e,e,e,e,s},
+            {w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,c,b,e,e,e,e,e,e,e},
             {e,e,b,e,s,e,e,e,e,e,e,e,e,e,e,e,e,s,e,s,s,e,e,e,e,e,e,e,e},
             {e,e,s,e,s,e,e,b,b,e,s,s,e,e,e,e,e,s,e,e,e,e,e,c,e,e,e,b,e},
             {e,e,e,s,e,e,e,e,e,e,s,e,s,e,e,e,e,e,e,e,e,e,e,s,e,e,e,s,e},
@@ -402,9 +413,10 @@ public class MyWorld extends World
         //}
         crystalCount = 0;
     }
+    
     Thread player = new Thread(new Runnable(){
         public void run(){
-            
+            movePlayer();
         }
     });
     

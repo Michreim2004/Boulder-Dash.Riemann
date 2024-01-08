@@ -2,16 +2,26 @@
 comment0.target=MyWorld
 comment1.params=
 comment1.target=MyWorld()
+comment10.params=
+comment10.target=void\ run()
+comment11.params=
+comment11.target=void\ run()
 comment2.params=
 comment2.target=void\ act()
 comment3.params=
-comment3.target=void\ checkKeys()
-comment3.text=public\ int\ getX(GreenfootImage\ img){\r\n\ \ \ \ \ \ \ \ for(int\ j\=0;j<images.length;j++){\r\n\ \ \ \ \ \ \ \ \ \ \ \ for(int\ i\=0;i<images[j].length;i++){\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GreenfootImage\ currentImage\ \=\ new\ GreenfootImage(images[j][i]);\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(currentImage.equals(img)){\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ i;\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ return\ 0;\r\n\ \ \ \ }\r\n\r\n\ \ \ \ public\ int\ getY(GreenfootImage\ img){\r\n\ \ \ \ \ \ \ \ for(int\ j\=0;j<images.length;j++){\r\n\ \ \ \ \ \ \ \ \ \ \ \ for(int\ i\=0;i<images[j].length;i++){\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GreenfootImage\ currentImage\ \=\ new\ GreenfootImage(images[j][i]);\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(currentImage.equals(img)){\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ j;\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ return\ 0;\r\n}
+comment3.target=void\ threads()
 comment4.params=
-comment4.target=void\ movePlayer()
+comment4.target=void\ checkKeys()
+comment4.text=public\ int\ getX(GreenfootImage\ img){\r\n\ \ \ \ \ \ \ \ for(int\ j\=0;j<images.length;j++){\r\n\ \ \ \ \ \ \ \ \ \ \ \ for(int\ i\=0;i<images[j].length;i++){\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GreenfootImage\ currentImage\ \=\ new\ GreenfootImage(images[j][i]);\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(currentImage.equals(img)){\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ i;\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ return\ 0;\r\n\ \ \ \ }\r\n\r\n\ \ \ \ public\ int\ getY(GreenfootImage\ img){\r\n\ \ \ \ \ \ \ \ for(int\ j\=0;j<images.length;j++){\r\n\ \ \ \ \ \ \ \ \ \ \ \ for(int\ i\=0;i<images[j].length;i++){\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GreenfootImage\ currentImage\ \=\ new\ GreenfootImage(images[j][i]);\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(currentImage.equals(img)){\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ return\ j;\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ return\ 0;\r\n}
 comment5.params=
-comment5.target=void\ checkForStone()
+comment5.target=void\ movePlayer()
 comment6.params=
-comment6.target=void\ reset()
-comment6.text=public\ void\ stone(){\r\n\ \ \ \ \ \ \ \ //if(active\ \=\=\ true){\r\n\ \ \ \ \ \ \ \ \ \ \ \ /*stoneThread.start();\r\n\ \ \ \ \ \ \ \ \ \ \ \ playerThread.start();\r\n\ \ \ \ \ \ \ \ \ \ \ \ if(active\ \!\=\ true){\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stoneThread.stop();\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ playerThread.stop();\r\n\ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ }\r\n}
-numComments=7
+comment6.target=void\ checkForStone()
+comment7.params=
+comment7.target=void\ reset()
+comment7.text=public\ void\ stone(){\r\n\ \ \ \ \ \ \ \ //if(active\ \=\=\ true){\r\n\ \ \ \ \ \ \ \ \ \ \ \ /*stoneThread.start();\r\n\ \ \ \ \ \ \ \ \ \ \ \ playerThread.start();\r\n\ \ \ \ \ \ \ \ \ \ \ \ if(active\ \!\=\ true){\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stoneThread.stop();\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ playerThread.stop();\r\n\ \ \ \ \ \ \ \ \ \ \ \ }\r\n\ \ \ \ \ \ \ \ }\r\n}
+comment8.params=
+comment8.target=void\ checkForNextLVL()
+comment9.params=
+comment9.target=void\ run()
+numComments=12
