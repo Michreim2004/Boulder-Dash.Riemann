@@ -12,7 +12,7 @@ public class MyWorld extends World
     GreenfootImage c = new GreenfootImage("crystal.png"); //lvl.1,11
     GreenfootImage z = new GreenfootImage("portal.png");
     GreenfootImage o = new GreenfootImage("bot.png");
-    GreenfootImage h = new GreenfootImage("white.png");
+    GreenfootImage white = new GreenfootImage("white.png");
     boolean upPressed = false;
     boolean downPressed = false;
     boolean leftPressed = false;
@@ -59,7 +59,6 @@ public class MyWorld extends World
         
         int x=0;
         int y=0;
-        
         for(int j=0;j<19;j++){
             for(int i=0;i<29;i++){ //oder bis images[j].length
                     getBackground().drawImage(images[j][i],x,y);
@@ -72,13 +71,14 @@ public class MyWorld extends World
         t2 = new Thread(new StoneT2(this));
         t3 = new Thread(new CrystalT3(this));
         t4 = new Thread(new BotT4(this));
-        t1.start();
+        //t1.start();
         t2.start();
         //setBackground(..);für evtl. lvl. 2
     }
     
     public void act(){
-        
+        movePlayer();
+        white();
     }
     
     /*public void act() {
@@ -253,7 +253,7 @@ public class MyWorld extends World
                     for(int j=0;j<19;j++){
                         for(int i=0;i<29;i++){
                                 if(images[j][i]==b){
-                                    images[j][i]=h;
+                                    images[j][i]=white;
                                 }
                             }
                     }
@@ -270,7 +270,7 @@ public class MyWorld extends World
                     y=0;
                     for(int j=0;j<19;j++){
                         for(int i=0;i<29;i++){
-                                if(images[j][i]== h){
+                                if(images[j][i]== white){
                                     images[j][i]=b;
                                 }
                             }
@@ -312,6 +312,8 @@ public class MyWorld extends World
                             images[sY + 1][sX] = s;
                             getBackground().drawImage(images[sY + 1][sX],sX*21,(sY*21) + 21);
                             getBackground().drawImage(images[sY][sX],sX*21,sY*21);
+                            explosion();
+                            Greenfoot.delay(9);
                             reset();
                         }
                     }
@@ -328,6 +330,20 @@ public class MyWorld extends World
                 //countFall = 0;
                 active = false;
             }
+        }
+    }
+    
+    public void explosion(){
+        for(int i=-1;i<2;i++){
+            for(int j=-1;j<2;j++){
+                images[sY-j][sX-i]=white;
+            }
+        }
+    }
+    
+    public void grab(){
+        if(Greenfoot.isKeyDown("space")){
+            
         }
     }
     
@@ -355,6 +371,27 @@ public class MyWorld extends World
         int sY = 0;//Steinpos.
         int x=0;
         int y=0;
+        GreenfootImage[][] images ={ //Level 1
+            {e,e,e,e,e,e,e,s,e,e,e,b,e,e,e,s,e,s,e,e,e,e,b,e,e,s,e,e,e},
+            {e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,c,s,e,e,e,e,e,b,e,e,e,b,e},
+            {e,e,e,p,e,e,e,e,e,e,e,e,e,e,e,e,s,e,e,e,e,e,e,e,e,s,e,e,e},
+            {e,e,e,e,e,e,e,e,e,s,e,e,e,b,b,e,e,e,e,e,e,s,e,e,s,e,e,e,b},
+            {e,e,e,e,e,e,e,e,e,s,s,e,e,s,s,s,e,e,e,s,e,e,e,e,e,s,e,s,e},
+            {s,e,e,e,b,b,e,e,e,e,e,s,e,e,e,s,e,s,e,e,e,e,e,e,e,s,e,s,s},
+            {w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,e,e,e,e,e,s,e,e,s},
+            {e,e,e,s,s,e,e,e,e,e,s,e,e,s,e,e,e,e,e,e,e,e,e,e,e,e,e,e,s},
+            {e,e,e,e,c,e,e,e,e,e,e,e,e,e,e,e,e,s,e,s,c,b,e,e,e,e,e,e,e},
+            {e,e,b,e,s,e,e,e,e,e,e,e,e,e,e,e,e,s,e,s,s,e,e,e,e,e,e,e,e},
+            {e,e,s,e,s,e,e,b,b,e,s,s,e,e,e,e,e,s,e,e,e,e,e,c,e,e,e,b,e},
+            {e,e,e,s,e,e,e,e,e,e,s,e,s,e,e,e,e,e,e,e,e,e,e,s,e,e,e,s,e},
+            {e,e,e,s,e,e,e,e,e,e,e,s,s,s,e,e,e,e,e,e,e,e,e,e,e,e,e,e,s},
+            {b,b,e,e,e,e,e,e,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w,w},
+            {s,b,e,e,e,e,e,e,e,e,b,c,e,s,e,e,e,s,e,e,e,e,s,e,e,b,e,e,e},
+            {c,s,e,e,e,e,e,e,e,e,s,s,e,e,e,e,e,e,b,b,e,e,e,s,e,s,e,e,e},
+            {e,e,e,e,s,e,e,e,e,e,e,e,s,e,e,e,e,e,s,e,s,c,e,e,e,e,e,e,e},
+            {e,e,e,e,s,c,b,e,e,e,e,e,s,e,s,s,e,e,s,e,s,c,e,e,e,e,z,e,e},
+            {e,c,e,e,e,e,s,e,e,e,e,e,e,e,e,e,e,e,s,e,e,c,e,e,e,e,e,e,e}
+        };
         for(int j=0;j<19;j++){
             for(int i=0;i<29;i++){ //oder bis images[j].length
                     getBackground().drawImage(images[j][i],x,y);
@@ -370,6 +407,12 @@ public class MyWorld extends World
         t1.start();
         t2.start();*/
     }
+    
+    public void stop(){
+        t1.stop();
+        t2.stop();
+    }
+    
     public void checkForNextLVL(){
         if(crystalCount>=9&&currentPlayerX==27&&currentPlayerY==18){
             GreenfootImage[][] images ={
