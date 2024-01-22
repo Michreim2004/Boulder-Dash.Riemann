@@ -353,11 +353,14 @@ public class MyWorld extends World
                 images[currentPlayerY-1][currentPlayerX]=b;
                 getBackground().drawImage(images[currentPlayerY-1][currentPlayerX],currentPlayerX*21,currentPlayerY*21-21);
             } else if (Greenfoot.isKeyDown("down")) {
-                
+                images[currentPlayerY-1][currentPlayerX]=b;
+                getBackground().drawImage(images[currentPlayerY + 1][currentPlayerX],currentPlayerX*21,(currentPlayerY*21)+21);
             } else if (Greenfoot.isKeyDown("left")) {
-                
+                images[currentPlayerY-1][currentPlayerX]=b;
+                getBackground().drawImage(images[currentPlayerY][currentPlayerX - 1],(currentPlayerX*21) - 21,currentPlayerY*21);
             } else if (Greenfoot.isKeyDown("right")) {
-                
+                images[currentPlayerY-1][currentPlayerX]=b;
+                getBackground().drawImage(images[currentPlayerY][currentPlayerX + 1],(currentPlayerX*21) + 21,currentPlayerY*21);
             }
             else{
                 
@@ -366,6 +369,15 @@ public class MyWorld extends World
                 grabX = true;
             }
             grabX = false;
+        }
+    }
+    
+    public void schieben(){
+        if(Greenfoot.isKeyDown("left")){
+            Greenfoot.delay(6);
+        }
+        if(Greenfoot.isKeyDown("right")){
+            Greenfoot.delay(6);
         }
     }
     
