@@ -30,6 +30,7 @@ public class MyWorld extends World
     private Thread t2;
     private Thread t3;
     private Thread t4;
+    private double threadCounter=0;
     private GreenfootImage[][] images ={ //Level 1
         {e,e,e,e,e,e,e,s,e,e,e,b,e,e,e,s,e,s,e,e,e,e,b,e,e,s,e,e,e},
         {e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,e,c,s,e,e,e,e,e,b,e,e,e,b,e},
@@ -80,6 +81,13 @@ public class MyWorld extends World
         white();
         checkForStone();
         //schieben();
+        threadCounter++;
+        if(threadCounter==1000000){
+            t1.stop();
+            threadCounter=0;
+            t1.start();
+        }
+        checkForNextLVL();
     }
     
     /*public void act() {
