@@ -25,7 +25,6 @@ public class MyWorld extends World
     private int sY = 0;//Steinpos.
     private boolean above = false;
     private int countFall = 0;
-    private boolean grabX = false;
     private boolean whiteX = false;
     private Thread t1;
     private Thread t2;
@@ -72,16 +71,15 @@ public class MyWorld extends World
         t2 = new Thread(new StoneT2(this));
         t3 = new Thread(new CrystalT3(this));
         t4 = new Thread(new BotT4(this));
-        //t1.start();
+        t1.start();
         //t2.start();
         //setBackground(..);für evtl. lvl. 2
     }
     
     public void act(){
-        movePlayer();
         white();
         checkForStone();
-        grab();
+        //schieben();
     }
     
     /*public void act() {
@@ -139,115 +137,113 @@ public class MyWorld extends World
     }
 
     public void movePlayer() {
-        if(grabX == false){
-            if(currentPlayerY>0){
-                if (upPressed) {
-                    if(images[currentPlayerY - 1][currentPlayerX]!=s&&images[currentPlayerY - 1][currentPlayerX]!= w){
-                        if(images[currentPlayerY - 1][currentPlayerX]== c){
-                            crystalCount++;
-                        }
-                        if(images[currentPlayerY - 1][currentPlayerX]== z &&crystalCount == 11){
-                            crystalCount = 0;
-                        }
-                        images[currentPlayerY][currentPlayerX] = b;
-                        images[currentPlayerY - 1][currentPlayerX] = p;
-                        getBackground().drawImage(images[currentPlayerY - 1][currentPlayerX],currentPlayerX*21,(currentPlayerY*21) - 21);
-                        getBackground().drawImage(images[currentPlayerY][currentPlayerX],currentPlayerX*21,currentPlayerY*21);
-                        if(currentPlayerY!=0){
-                            currentPlayerY -= 1;
-                        }
-                        Greenfoot.delay(6);
+        if(currentPlayerY>0){
+            if (upPressed) {
+                if(images[currentPlayerY - 1][currentPlayerX]!=s&&images[currentPlayerY - 1][currentPlayerX]!= w){
+                    if(images[currentPlayerY - 1][currentPlayerX]== c){
+                        crystalCount++;
                     }
+                    if(images[currentPlayerY - 1][currentPlayerX]== z &&crystalCount == 11){
+                        crystalCount = 0;
+                    }
+                    images[currentPlayerY][currentPlayerX] = b;
+                    images[currentPlayerY - 1][currentPlayerX] = p;
+                    getBackground().drawImage(images[currentPlayerY - 1][currentPlayerX],currentPlayerX*21,(currentPlayerY*21) - 21);
+                    getBackground().drawImage(images[currentPlayerY][currentPlayerX],currentPlayerX*21,currentPlayerY*21);
+                    if(currentPlayerY!=0){
+                        currentPlayerY -= 1;
+                    }
+                    Greenfoot.delay(6);
                 }
             }
-            if(currentPlayerY<18){
-                if (downPressed) {
-                    if(images[currentPlayerY + 1][currentPlayerX]!=s&&images[currentPlayerY + 1][currentPlayerX]!= w){
-                        if(images[currentPlayerY + 1][currentPlayerX]== c){
-                            crystalCount++;
-                        }
-                        if(images[currentPlayerY + 1][currentPlayerX]== z &&crystalCount == 11){
-                            crystalCount = 0;
-                        }
-                        if(active!=true){
-                            if(currentPlayerY!=0){
-                                if(images[currentPlayerY - 1][currentPlayerX]==s){
-                                    sX = currentPlayerX;
-                                    sY = currentPlayerY - 1;
-                                    active=true;
-                                    //stone();
-                                }
-                            }
-                        }
-                        images[currentPlayerY][currentPlayerX] = b;
-                        images[currentPlayerY + 1][currentPlayerX] = p;
-                        getBackground().drawImage(images[currentPlayerY + 1][currentPlayerX],currentPlayerX*21,(currentPlayerY*21) + 21);
-                        getBackground().drawImage(images[currentPlayerY][currentPlayerX],currentPlayerX*21,currentPlayerY*21);
-                        currentPlayerY += 1;
-                        Greenfoot.delay(6);
-                    }
-                }
-            }
-            if(currentPlayerX>0){
-                if (leftPressed) {
-                    if(images[currentPlayerY][currentPlayerX - 1]!=s&&images[currentPlayerY][currentPlayerX - 1]!= w){
-                        if(images[currentPlayerY][currentPlayerX - 1]== c){
-                            crystalCount++;
-                        }
-                        if(images[currentPlayerY][currentPlayerX - 1]== z &&crystalCount == 11){
-                            crystalCount = 0;
-                        }
-                        if(active!=true){
-                            if(currentPlayerY!=0){
-                                if(images[currentPlayerY - 1][currentPlayerX]==s){
-                                    sX = currentPlayerX;
-                                    sY = currentPlayerY - 1;
-                                    active=true;
-                                    //stone();
-                                }
-                            }
-                        }
-                        images[currentPlayerY][currentPlayerX] = b;
-                        images[currentPlayerY][currentPlayerX - 1] = p;
-                        getBackground().drawImage(images[currentPlayerY][currentPlayerX - 1],(currentPlayerX*21) - 21,currentPlayerY*21);
-                        getBackground().drawImage(images[currentPlayerY][currentPlayerX],currentPlayerX*21,currentPlayerY*21);
-                        if(currentPlayerX!=0){
-                            currentPlayerX -= 1;
-                        }
-                        Greenfoot.delay(6);
-                    }
-                }
-            }
-            if(currentPlayerX<28){
-                if (rightPressed) {
-                    if(images[currentPlayerY][currentPlayerX + 1]!=s&&images[currentPlayerY][currentPlayerX + 1]!= w){
-                        if(images[currentPlayerY][currentPlayerX + 1]== c){
-                            crystalCount++;
-                        }
-                        if(images[currentPlayerY][currentPlayerX + 1]== z &&crystalCount == 11){
-                            crystalCount = 0;
-                        }
-                        if(active!=true){
-                            if(currentPlayerY!=0){
-                                if(images[currentPlayerY - 1][currentPlayerX]==s){
-                                    sX = currentPlayerX;
-                                    sY = currentPlayerY - 1;
-                                    active=true;
-                                    //stone();
-                                }
-                            }
-                        }
-                        images[currentPlayerY][currentPlayerX] = b;
-                        images[currentPlayerY][currentPlayerX + 1] = p;
-                        getBackground().drawImage(images[currentPlayerY][currentPlayerX + 1],(currentPlayerX*21) + 21,currentPlayerY*21);
-                        getBackground().drawImage(images[currentPlayerY][currentPlayerX],currentPlayerX*21,currentPlayerY*21);
-                        currentPlayerX += 1;
-                        Greenfoot.delay(6);
-                    }
-                }
-            }
-            checkKeys();
         }
+        if(currentPlayerY<18){
+            if (downPressed) {
+                if(images[currentPlayerY + 1][currentPlayerX]!=s&&images[currentPlayerY + 1][currentPlayerX]!= w){
+                    if(images[currentPlayerY + 1][currentPlayerX]== c){
+                        crystalCount++;
+                    }
+                    if(images[currentPlayerY + 1][currentPlayerX]== z &&crystalCount == 11){
+                        crystalCount = 0;
+                    }
+                    if(active!=true){
+                        if(currentPlayerY!=0){
+                            if(images[currentPlayerY - 1][currentPlayerX]==s){
+                                sX = currentPlayerX;
+                                sY = currentPlayerY - 1;
+                                active=true;
+                                //stone();
+                            }
+                        }
+                    }
+                    images[currentPlayerY][currentPlayerX] = b;
+                    images[currentPlayerY + 1][currentPlayerX] = p;
+                    getBackground().drawImage(images[currentPlayerY + 1][currentPlayerX],currentPlayerX*21,(currentPlayerY*21) + 21);
+                    getBackground().drawImage(images[currentPlayerY][currentPlayerX],currentPlayerX*21,currentPlayerY*21);
+                    currentPlayerY += 1;
+                    Greenfoot.delay(6);
+                }
+            }
+        }
+        if(currentPlayerX>0){
+            if (leftPressed) {
+                if(images[currentPlayerY][currentPlayerX - 1]!=s&&images[currentPlayerY][currentPlayerX - 1]!= w){
+                    if(images[currentPlayerY][currentPlayerX - 1]== c){
+                        crystalCount++;
+                    }
+                    if(images[currentPlayerY][currentPlayerX - 1]== z &&crystalCount == 11){
+                        crystalCount = 0;
+                    }
+                    if(active!=true){
+                        if(currentPlayerY!=0){
+                            if(images[currentPlayerY - 1][currentPlayerX]==s){
+                                sX = currentPlayerX;
+                                sY = currentPlayerY - 1;
+                                active=true;
+                                //stone();
+                            }
+                        }
+                    }
+                    images[currentPlayerY][currentPlayerX] = b;
+                    images[currentPlayerY][currentPlayerX - 1] = p;
+                    getBackground().drawImage(images[currentPlayerY][currentPlayerX - 1],(currentPlayerX*21) - 21,currentPlayerY*21);
+                    getBackground().drawImage(images[currentPlayerY][currentPlayerX],currentPlayerX*21,currentPlayerY*21);
+                    if(currentPlayerX!=0){
+                        currentPlayerX -= 1;
+                    }
+                    Greenfoot.delay(6);
+                }
+            }
+        }
+        if(currentPlayerX<28){
+            if (rightPressed) {
+                if(images[currentPlayerY][currentPlayerX + 1]!=s&&images[currentPlayerY][currentPlayerX + 1]!= w){
+                    if(images[currentPlayerY][currentPlayerX + 1]== c){
+                        crystalCount++;
+                    }
+                    if(images[currentPlayerY][currentPlayerX + 1]== z &&crystalCount == 11){
+                        crystalCount = 0;
+                    }
+                    if(active!=true){
+                        if(currentPlayerY!=0){
+                            if(images[currentPlayerY - 1][currentPlayerX]==s){
+                                sX = currentPlayerX;
+                                sY = currentPlayerY - 1;
+                                active=true;
+                                //stone();
+                            }
+                        }
+                    }
+                    images[currentPlayerY][currentPlayerX] = b;
+                    images[currentPlayerY][currentPlayerX + 1] = p;
+                    getBackground().drawImage(images[currentPlayerY][currentPlayerX + 1],(currentPlayerX*21) + 21,currentPlayerY*21);
+                    getBackground().drawImage(images[currentPlayerY][currentPlayerX],currentPlayerX*21,currentPlayerY*21);
+                    currentPlayerX += 1;
+                    Greenfoot.delay(6);
+                }
+            }
+        }
+        checkKeys();
     }
     
     public void white(){
@@ -345,39 +341,69 @@ public class MyWorld extends World
                 getBackground().drawImage(images[sY+j][sX+i],(sX*21)+21*j,(sY*21)+21*i);
             }
         }
+        Greenfoot.delay(5);
+        for(int i=0;i<3;i++){
+            for(int j=-1;j<2;j++){
+                images[sY+j][sX+i]=c;
+                getBackground().drawImage(images[sY+j][sX+i],(sX*21)+21*j,(sY*21)+21*i);
+            }
+        }
     }
     
     public void grab(){
-        if(Greenfoot.isKeyDown("space")){
-                if (Greenfoot.isKeyDown("up")) {
+        while(Greenfoot.isKeyDown("space")){
+                if (Greenfoot.isKeyDown("up")&&images[currentPlayerY-1][currentPlayerX]==e) {
                 images[currentPlayerY-1][currentPlayerX]=b;
                 getBackground().drawImage(images[currentPlayerY-1][currentPlayerX],currentPlayerX*21,currentPlayerY*21-21);
-            } else if (Greenfoot.isKeyDown("down")) {
-                images[currentPlayerY-1][currentPlayerX]=b;
-                getBackground().drawImage(images[currentPlayerY + 1][currentPlayerX],currentPlayerX*21,(currentPlayerY*21)+21);
-            } else if (Greenfoot.isKeyDown("left")) {
-                images[currentPlayerY-1][currentPlayerX]=b;
+            } else if (Greenfoot.isKeyDown("down")&&images[currentPlayerY+1][currentPlayerX]==e) {
+                images[currentPlayerY+1][currentPlayerX]=b;
+                getBackground().drawImage(images[currentPlayerY + 1][currentPlayerX],currentPlayerX*21,currentPlayerY*21+21);
+            } else if (Greenfoot.isKeyDown("left")&&images[currentPlayerY][currentPlayerX-1]==e) {
+                images[currentPlayerY][currentPlayerX-1]=b;
                 getBackground().drawImage(images[currentPlayerY][currentPlayerX - 1],(currentPlayerX*21) - 21,currentPlayerY*21);
-            } else if (Greenfoot.isKeyDown("right")) {
-                images[currentPlayerY-1][currentPlayerX]=b;
+            } else if (Greenfoot.isKeyDown("right")&&images[currentPlayerY][currentPlayerX+1]==e) {
+                images[currentPlayerY][currentPlayerX+1]=b;
                 getBackground().drawImage(images[currentPlayerY][currentPlayerX + 1],(currentPlayerX*21) + 21,currentPlayerY*21);
             }
-            else{
-                
-            }
-            while(Greenfoot.isKeyDown("space")){
-                grabX = true;
-            }
-            grabX = false;
         }
     }
     
     public void schieben(){
-        if(Greenfoot.isKeyDown("left")){
-            Greenfoot.delay(6);
+        while(Greenfoot.isKeyDown("left")){ //&&images[currentPlayerY][currentPlayerX-1]==s||images[currentPlayerY+1][currentPlayerX-2]==b
+            Greenfoot.delay(8);
+            if(currentPlayerX>1){
+                if(images[currentPlayerY][currentPlayerX-1]==s&&images[currentPlayerY][currentPlayerX-2]==b){
+                    images[currentPlayerY][currentPlayerX-1]=p;
+                    images[currentPlayerY][currentPlayerX-2]=s;
+                    getBackground().drawImage(images[currentPlayerY][currentPlayerX - 1],(currentPlayerX*21) - 21,currentPlayerY*21);
+                    getBackground().drawImage(images[currentPlayerY][currentPlayerX - 2],(currentPlayerX*21) - 42,currentPlayerY*21);
+                }
+            }
+            if(images[currentPlayerY+1][currentPlayerX-2]==b){
+                sX = currentPlayerX-2;
+                sY = currentPlayerY+1;
+                active=true;
+                checkForStone();
+            }
+            Greenfoot.delay(8);
         }
-        if(Greenfoot.isKeyDown("right")){
-            Greenfoot.delay(6);
+        while(Greenfoot.isKeyDown("right")){
+            Greenfoot.delay(8);
+            if(currentPlayerX<27){
+                if(images[currentPlayerY][currentPlayerX+1]==s&&images[currentPlayerY][currentPlayerX+2]==b){
+                    images[currentPlayerY][currentPlayerX+1]=p;
+                    images[currentPlayerY][currentPlayerX+2]=s;
+                    getBackground().drawImage(images[currentPlayerY][currentPlayerX + 1],(currentPlayerX*21) + 21,currentPlayerY*21);
+                    getBackground().drawImage(images[currentPlayerY][currentPlayerX + 2],(currentPlayerX*21) + 42,currentPlayerY*21);
+                }
+            }
+            if(images[currentPlayerY+1][currentPlayerX+2]==b){
+                sX = currentPlayerX+2;
+                sY = currentPlayerY+1;
+                active=true;
+                checkForStone();
+            }
+            Greenfoot.delay(8);
         }
     }
     

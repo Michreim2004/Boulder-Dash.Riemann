@@ -12,8 +12,10 @@ public class PlayerT1 extends Actor implements Runnable //setRotation
     {
         while(true){
             world.movePlayer();
-            world.white();
-            //Greenfoot.delay(6);
+            //world.schieben();
+            world.grab();
+            //world.white();
+            Greenfoot.delay(2);
             //world.reset();
         }
     }
